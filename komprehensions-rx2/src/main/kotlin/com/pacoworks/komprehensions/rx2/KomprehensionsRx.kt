@@ -21,6 +21,442 @@ package com.pacoworks.komprehensions.rx2
 import io.reactivex.Observable
 import io.reactivex.ObservableTransformer
 
+import io.reactivex.Single
+import io.reactivex.SingleTransformer
+
+
+/**
+ * Composes an [rx.Single] from multiple creation functions chained by [rx.Single.flatMap].
+ *
+ * @return composed Single
+ */
+fun <A, R> doFlatMap(
+        zero: () -> Single<A>,
+        one: (A) -> Single<R>): Single<R> =
+        zero.invoke()
+                .flatMap { a ->
+                    one.invoke(a)
+                }
+
+/**
+ * Composes an [rx.Single] from multiple creation functions chained by [rx.Single.flatMap].
+ *
+ * @return composed Single
+ */
+fun <A, B, R> doFlatMap(
+        zero: () -> Single<A>,
+        one: (A) -> Single<B>,
+        two: (A, B) -> Single<R>): Single<R> =
+        zero.invoke()
+                .flatMap { a ->
+                    one.invoke(a)
+                            .flatMap { b ->
+                                two.invoke(a, b)
+                            }
+                }
+
+/**
+ * Composes an [rx.Single] from multiple creation functions chained by [rx.Single.flatMap].
+ *
+ * @return composed Single
+ */
+fun <A, B, C, R> doFlatMap(
+        zero: () -> Single<A>,
+        one: (A) -> Single<B>,
+        two: (A, B) -> Single<C>,
+        three: (A, B, C) -> Single<R>): Single<R> =
+        zero.invoke()
+                .flatMap { a ->
+                    one.invoke(a)
+                            .flatMap { b ->
+                                two.invoke(a, b)
+                                        .flatMap { c ->
+                                            three.invoke(a, b, c)
+                                        }
+                            }
+                }
+
+/**
+ * Composes an [rx.Single] from multiple creation functions chained by [rx.Single.flatMap].
+ *
+ * @return composed Single
+ */
+fun <A, B, C, D, R> doFlatMap(
+        zero: () -> Single<A>,
+        one: (A) -> Single<B>,
+        two: (A, B) -> Single<C>,
+        three: (A, B, C) -> Single<D>,
+        four: (A, B, C, D) -> Single<R>): Single<R> =
+        zero.invoke()
+                .flatMap { a ->
+                    one.invoke(a)
+                            .flatMap { b ->
+                                two.invoke(a, b)
+                                        .flatMap { c ->
+                                            three.invoke(a, b, c)
+                                                    .flatMap { d ->
+                                                        four.invoke(a, b, c, d)
+                                                    }
+                                        }
+                            }
+                }
+
+/**
+ * Composes an [rx.Single] from multiple creation functions chained by [rx.Single.flatMap].
+ *
+ * @return composed Single
+ */
+fun <A, B, C, D, E, R> doFlatMap(
+        zero: () -> Single<A>,
+        one: (A) -> Single<B>,
+        two: (A, B) -> Single<C>,
+        three: (A, B, C) -> Single<D>,
+        four: (A, B, C, D) -> Single<E>,
+        five: (A, B, C, D, E) -> Single<R>): Single<R> =
+        zero.invoke()
+                .flatMap { a ->
+                    one.invoke(a)
+                            .flatMap { b ->
+                                two.invoke(a, b)
+                                        .flatMap { c ->
+                                            three.invoke(a, b, c)
+                                                    .flatMap { d ->
+                                                        four.invoke(a, b, c, d)
+                                                                .flatMap { e ->
+                                                                    five.invoke(a, b, c, d, e)
+                                                                }
+                                                    }
+                                        }
+                            }
+                }
+
+/**
+ * Composes an [rx.Single] from multiple creation functions chained by [rx.Single.flatMap].
+ *
+ * @return composed Single
+ */
+fun <A, B, C, D, E, F, R> doFlatMap(
+        zero: () -> Single<A>,
+        one: (A) -> Single<B>,
+        two: (A, B) -> Single<C>,
+        three: (A, B, C) -> Single<D>,
+        four: (A, B, C, D) -> Single<E>,
+        five: (A, B, C, D, E) -> Single<F>,
+        six: (A, B, C, D, E, F) -> Single<R>): Single<R> =
+        zero.invoke()
+                .flatMap { a ->
+                    one.invoke(a)
+                            .flatMap { b ->
+                                two.invoke(a, b)
+                                        .flatMap { c ->
+                                            three.invoke(a, b, c)
+                                                    .flatMap { d ->
+                                                        four.invoke(a, b, c, d)
+                                                                .flatMap { e ->
+                                                                    five.invoke(a, b, c, d, e)
+                                                                            .flatMap { f ->
+                                                                                six.invoke(a, b, c, d, e, f)
+                                                                            }
+                                                                }
+                                                    }
+                                        }
+                            }
+                }
+
+/**
+ * Composes an [rx.Single] from multiple creation functions chained by [rx.Single.flatMap].
+ *
+ * @return composed Single
+ */
+fun <A, B, C, D, E, F, G, R> doFlatMap(
+        zero: () -> Single<A>,
+        one: (A) -> Single<B>,
+        two: (A, B) -> Single<C>,
+        three: (A, B, C) -> Single<D>,
+        four: (A, B, C, D) -> Single<E>,
+        five: (A, B, C, D, E) -> Single<F>,
+        six: (A, B, C, D, E, F) -> Single<G>,
+        seven: (A, B, C, D, E, F, G) -> Single<R>): Single<R> =
+        zero.invoke()
+                .flatMap { a ->
+                    one.invoke(a)
+                            .flatMap { b ->
+                                two.invoke(a, b)
+                                        .flatMap { c ->
+                                            three.invoke(a, b, c)
+                                                    .flatMap { d ->
+                                                        four.invoke(a, b, c, d)
+                                                                .flatMap { e ->
+                                                                    five.invoke(a, b, c, d, e)
+                                                                            .flatMap { f ->
+                                                                                six.invoke(a, b, c, d, e, f)
+                                                                                        .flatMap { g ->
+                                                                                            seven.invoke(a, b, c, d, e, f, g)
+                                                                                        }
+                                                                            }
+                                                                }
+                                                    }
+                                        }
+                            }
+                }
+
+/**
+ * Composes an [rx.Single] from multiple creation functions chained by [rx.Single.flatMap].
+ *
+ * @return composed Single
+ */
+fun <A, B, C, D, E, F, G, H, R> doFlatMap(
+        zero: () -> Single<A>,
+        one: (A) -> Single<B>,
+        two: (A, B) -> Single<C>,
+        three: (A, B, C) -> Single<D>,
+        four: (A, B, C, D) -> Single<E>,
+        five: (A, B, C, D, E) -> Single<F>,
+        six: (A, B, C, D, E, F) -> Single<G>,
+        seven: (A, B, C, D, E, F, G) -> Single<H>,
+        eight: (A, B, C, D, E, F, G, H) -> Single<R>): Single<R> =
+        zero.invoke()
+                .flatMap { a ->
+                    one.invoke(a)
+                            .flatMap { b ->
+                                two.invoke(a, b)
+                                        .flatMap { c ->
+                                            three.invoke(a, b, c)
+                                                    .flatMap { d ->
+                                                        four.invoke(a, b, c, d)
+                                                                .flatMap { e ->
+                                                                    five.invoke(a, b, c, d, e)
+                                                                            .flatMap { f ->
+                                                                                six.invoke(a, b, c, d, e, f)
+                                                                                        .flatMap { g ->
+                                                                                            seven.invoke(a, b, c, d, e, f, g)
+                                                                                                    .flatMap { h ->
+                                                                                                        eight.invoke(a, b, c, d, e, f, g, h)
+                                                                                                    }
+                                                                                        }
+                                                                            }
+                                                                }
+                                                    }
+                                        }
+                            }
+                }
+
+/**
+ * Composes an [rx.Single] from multiple creation functions chained by [rx.Single.flatMap].
+ *
+ * @return composed Single
+ */
+fun <A, B, C, D, E, F, G, H, I, R> doFlatMap(
+        zero: () -> Single<A>,
+        one: (A) -> Single<B>,
+        two: (A, B) -> Single<C>,
+        three: (A, B, C) -> Single<D>,
+        four: (A, B, C, D) -> Single<E>,
+        five: (A, B, C, D, E) -> Single<F>,
+        six: (A, B, C, D, E, F) -> Single<G>,
+        seven: (A, B, C, D, E, F, G) -> Single<H>,
+        eight: (A, B, C, D, E, F, G, H) -> Single<I>,
+        nine: (A, B, C, D, E, F, G, H, I) -> Single<R>): Single<R> =
+        zero.invoke()
+                .flatMap { a ->
+                    one.invoke(a)
+                            .flatMap { b ->
+                                two.invoke(a, b)
+                                        .flatMap { c ->
+                                            three.invoke(a, b, c)
+                                                    .flatMap { d ->
+                                                        four.invoke(a, b, c, d)
+                                                                .flatMap { e ->
+                                                                    five.invoke(a, b, c, d, e)
+                                                                            .flatMap { f ->
+                                                                                six.invoke(a, b, c, d, e, f)
+                                                                                        .flatMap { g ->
+                                                                                            seven.invoke(a, b, c, d, e, f, g)
+                                                                                                    .flatMap { h ->
+                                                                                                        eight.invoke(a, b, c, d, e, f, g, h)
+                                                                                                                .flatMap { i ->
+                                                                                                                    nine.invoke(a, b, c, d, e, f, g, h, i)
+                                                                                                                }
+                                                                                                    }
+                                                                                        }
+                                                                            }
+                                                                }
+                                                    }
+                                        }
+                            }
+                }
+
+/**
+ * Composes an [rx.Single] from multiple [Transformer] chained by [Single.compose].
+ *
+ * @return composed Single
+ */
+fun <A, R> doCompose(
+        zero: () -> Single<A>,
+        one: SingleTransformer<A, R>): Single<R> =
+        zero()
+                .compose(one)
+
+/**
+ * Composes an [rx.Single] from multiple [Transformer] chained by [Single.compose].
+ *
+ * @return composed Single
+ */
+fun <A, B, R> doCompose(
+        zero: () -> Single<A>,
+        one: SingleTransformer<A, B>,
+        two: SingleTransformer<B, R>): Single<R> =
+        zero()
+                .compose(one)
+                .compose(two)
+
+/**
+ * Composes an [rx.Single] from multiple [Transformer] chained by [Single.compose].
+ *
+ * @return composed Single
+ */
+fun <A, B, C, R> doCompose(
+        zero: () -> Single<A>,
+        one: SingleTransformer<A, B>,
+        two: SingleTransformer<B, C>,
+        three: SingleTransformer<C, R>): Single<R> =
+        zero()
+                .compose(one)
+                .compose(two)
+                .compose(three)
+
+/**
+ * Composes an [rx.Single] from multiple [Transformer] chained by [Single.compose].
+ *
+ * @return composed Single
+ */
+fun <A, B, C, D, R> doCompose(
+        zero: () -> Single<A>,
+        one: SingleTransformer<A, B>,
+        two: SingleTransformer<B, C>,
+        three: SingleTransformer<C, D>,
+        four: SingleTransformer<D, R>): Single<R> =
+        zero()
+                .compose(one)
+                .compose(two)
+                .compose(three)
+                .compose(four)
+
+/**
+ * Composes an [rx.Single] from multiple [Transformer] chained by [Single.compose].
+ *
+ * @return composed Single
+ */
+fun <A, B, C, D, E, R> doCompose(
+        zero: () -> Single<A>,
+        one: SingleTransformer<A, B>,
+        two: SingleTransformer<B, C>,
+        three: SingleTransformer<C, D>,
+        four: SingleTransformer<D, E>,
+        five: SingleTransformer<E, R>): Single<R> =
+        zero()
+                .compose(one)
+                .compose(two)
+                .compose(three)
+                .compose(four)
+                .compose(five)
+
+/**
+ * Composes an [rx.Single] from multiple [Transformer] chained by [Single.compose].
+ *
+ * @return composed Single
+ */
+fun <A, B, C, D, E, F, R> doCompose(
+        zero: () -> Single<A>,
+        one: SingleTransformer<A, B>,
+        two: SingleTransformer<B, C>,
+        three: SingleTransformer<C, D>,
+        four: SingleTransformer<D, E>,
+        five: SingleTransformer<E, F>,
+        six: SingleTransformer<F, R>): Single<R> =
+        zero()
+                .compose(one)
+                .compose(two)
+                .compose(three)
+                .compose(four)
+                .compose(five)
+                .compose(six)
+
+/**
+ * Composes an [rx.Single] from multiple [Transformer] chained by [Single.compose].
+ *
+ * @return composed Single
+ */
+fun <A, B, C, D, E, F, G, R> doCompose(
+        zero: () -> Single<A>,
+        one: SingleTransformer<A, B>,
+        two: SingleTransformer<B, C>,
+        three: SingleTransformer<C, D>,
+        four: SingleTransformer<D, E>,
+        five: SingleTransformer<E, F>,
+        six: SingleTransformer<F, G>,
+        seven: SingleTransformer<G, R>): Single<R> =
+        zero()
+                .compose(one)
+                .compose(two)
+                .compose(three)
+                .compose(four)
+                .compose(five)
+                .compose(six)
+                .compose(seven)
+
+/**
+ * Composes an [rx.Single] from multiple [Transformer] chained by [Single.compose].
+ *
+ * @return composed Single
+ */
+fun <A, B, C, D, E, F, G, H, R> doCompose(
+        zero: () -> Single<A>,
+        one: SingleTransformer<A, B>,
+        two: SingleTransformer<B, C>,
+        three: SingleTransformer<C, D>,
+        four: SingleTransformer<D, E>,
+        five: SingleTransformer<E, F>,
+        six: SingleTransformer<F, G>,
+        seven: SingleTransformer<G, H>,
+        eight: SingleTransformer<H, R>): Single<R> =
+        zero()
+                .compose(one)
+                .compose(two)
+                .compose(three)
+                .compose(four)
+                .compose(five)
+                .compose(six)
+                .compose(seven)
+                .compose(eight)
+
+/**
+ * Composes an [rx.Single] from multiple [Transformer] chained by [Single.compose].
+ *
+ * @return composed Single
+ */
+fun <A, B, C, D, E, F, G, H, I, R> doCompose(
+        zero: () -> Single<A>,
+        one: SingleTransformer<A, B>,
+        two: SingleTransformer<B, C>,
+        three: SingleTransformer<C, D>,
+        four: SingleTransformer<D, E>,
+        five: SingleTransformer<E, F>,
+        six: SingleTransformer<F, G>,
+        seven: SingleTransformer<G, H>,
+        eight: SingleTransformer<H, I>,
+        nine: SingleTransformer<I, R>): Single<R> =
+        zero()
+                .compose(one)
+                .compose(two)
+                .compose(three)
+                .compose(four)
+                .compose(five)
+                .compose(six)
+                .compose(seven)
+                .compose(eight)
+                .compose(nine)
+
 /**
  * Composes an [rx.Observable] from multiple creation functions chained by [rx.Observable.flatMap].
  *
